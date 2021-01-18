@@ -1,0 +1,40 @@
+<div class="container">
+ 
+
+      <h1 class="display-4">Lista de Tareas </h1>
+      <p class="lead">
+        Aqui se listan todas tus tareas
+      </p>
+
+
+
+  <ul class="list-group" *ngFor="let a of tarea?.tareas">
+    <li
+      class="list-group-item"
+      [value]="tarea._id"
+      *ngIf="a.autor == getSesion()"
+    >
+      <a [routerLink]="['/editar/', a._id]">Tarea: {{ a.titulo }}</a>
+      <p>{{ a.descripcion }}</p>
+      <button class="btn btn-danger float-right" (click)="borrarTarea(a._id)">
+        Eliminar
+      </button>
+      <!-- <button
+        class="btn btn-primary btn-sm float-right"
+        [routerLink]="['/editar/', tarea.tareas._id]"
+      >
+        Editar
+      </button> -->
+    </li>
+  </ul>
+  <div class="container-add">
+    <hr />
+    <a [routerLink]="['/agregar']"
+      ><button class="btn btn-primary btn-block">agregar </button></a
+    >
+  </div>
+</div>
+
+
+
+<!-- [routerLink]="" -->
